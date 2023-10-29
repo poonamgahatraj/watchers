@@ -1,10 +1,18 @@
 <template>
     <h1>Hello</h1>
     <h2>Good morning</h2>
+    <h1 ref="count">{{ count }}</h1>
+    <button @click="count=count+1">update button</button>
 </template>
 
 <script>
 export default{
+
+    data(){
+        return{
+            count:0
+        }
+    },
 
 
     //beforeCreate(){
@@ -15,12 +23,20 @@ export default{
      //   alert("component created")
     //}
 
-    beforeMount(){
-        console.log("beforemount", this.$el)
+    //beforeMount(){
+      //  console.log("beforemount", this.$el)
+    //},
+
+    //mounted(){
+      //  console.log("mounted",this.$el)
+    //}
+
+    beforeUpdate(){
+        console.log("before update", this.$refs['count'].textContent)
     },
 
-    mounted(){
-        console.log("mounted",this.$el)
+    updated(){
+        console.log("update", this.$refs['count'].textContent)
     }
 
 }
